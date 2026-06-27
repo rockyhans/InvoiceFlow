@@ -1,7 +1,4 @@
-**INVOICE & QUOTATION**
-
-**MANAGEMENT APPLICATION**
-
+<h1 align="center">InvoiceFlow</h1>
 Implementation & Feature Documentation
 
 | **Prepared For** | Ultrakey IT Solutions Private Limited     |
@@ -308,6 +305,7 @@ Replace the current logo URL text field in Business Settings with a real file up
 # 6\. Project Folder Structure
 
 ## 6.1 Backend
+```
 
 server/
 
@@ -366,9 +364,11 @@ server/
 ├── app.js
 
 └── server.js
+```
+
 
 ## 6.2 Frontend
-
+```
 client/src/
 
 ├── api/
@@ -416,3 +416,4 @@ client/src/
 │ └── table/ (DataTable, TablePagination)
 
 └── layouts/DashboardLayout.jsx
+```
