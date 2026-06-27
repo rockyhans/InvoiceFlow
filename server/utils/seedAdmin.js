@@ -8,7 +8,7 @@ dotenv.config();
 
 await mongoose.connect(process.env.MONGO_URI);
 
-const password = await bcrypt.hash("admin123", 10);
+const password = await bcrypt.hash("Admin@123", 10);
 
 await Admin.deleteMany();
 
