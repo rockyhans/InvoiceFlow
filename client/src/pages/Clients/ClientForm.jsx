@@ -146,7 +146,7 @@ const ClientForm = ({ initialData, onSubmit, submitLoading = false }) => {
             <div className="flex justify-end pt-2">
                 <Button type="submit" loading={submitLoading}>
                     {submitLoading
-                        ? <Loader size="sm" text="" />
+                        ? "Saving..."
                         : "Save Client"
                     }                </Button>
             </div>

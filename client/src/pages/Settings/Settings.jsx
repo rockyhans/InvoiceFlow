@@ -271,7 +271,7 @@ const Settings = () => {
 
                 <div className="flex items-center gap-4 mt-8">
                     <Button onClick={handleSave} disabled={saving} className="cursor-pointer">
-                        {saving ? <Loader size="sm" text="" /> : "Save Settings"}
+                        {saving ? "Saving..." : "Save Settings"}
                     </Button>
                     {success && (
                         <span className="text-green-600 text-sm font-medium animate-pulse">
