@@ -124,7 +124,7 @@ const Login = () => {
 
                     <div className="pt-2">
                         <Button type="submit" disabled={loading} className="w-full justify-center">
-                            {loading ? <Loader size="sm" text="" /> : "Login"}
+                            {loading ? "Loading..." : "Login"}
                         </Button>
                     </div>
 
