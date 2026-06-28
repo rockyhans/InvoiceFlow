@@ -11,12 +11,6 @@ import {
 import sendEmail from "../utils/sendEmail.js";
 import PDFDocument from "pdfkit";
 
-/*
-==========================================
-Create Invoice
-==========================================
-*/
-
 export const createInvoice = async (req, res) => {
     try {
 
@@ -151,12 +145,6 @@ export const createInvoice = async (req, res) => {
     }
 };
 
-/*
-==========================================
-Get All Invoices
-==========================================
-*/
-
 export const getInvoices = async (req, res) => {
 
     try {
@@ -199,12 +187,6 @@ export const getInvoices = async (req, res) => {
 
 };
 
-/*
-==========================================
-Get Invoice By Id
-==========================================
-*/
-
 export const getInvoiceById = async (req, res) => {
 
     try {
@@ -221,7 +203,7 @@ export const getInvoiceById = async (req, res) => {
         // getInvoiceById
         const invoice = await Invoice.findOne({
             _id: req.params.id,
-            admin: req.user._id,   // ✅ scoped to admin
+            admin: req.user._id,   
         })
             .populate("client")
             .populate("quote");
@@ -262,11 +244,6 @@ export const getInvoiceById = async (req, res) => {
 
 };
 
-/*
-==========================================
-Update Invoice
-==========================================
-*/
 
 export const updateInvoice = async (req, res) => {
 
@@ -278,7 +255,7 @@ export const updateInvoice = async (req, res) => {
         // updateInvoice
         const invoice = await Invoice.findOne({
             _id: req.params.id,
-            admin: req.user._id,   // ✅ scoped to admin
+            admin: req.user._id,  
         });
 
         if (!invoice) {
@@ -420,19 +397,13 @@ export const updateInvoice = async (req, res) => {
 
 };
 
-/*
-==========================================
-Delete Invoice
-==========================================
-*/
-
 export const deleteInvoice = async (req, res) => {
 
     try {
 
         const invoice = await Invoice.findOne({
             _id: req.params.id,
-            admin: req.user._id,   // ✅ scoped to admin
+            admin: req.user._id, 
         });
 
         if (!invoice) {
@@ -447,8 +418,7 @@ export const deleteInvoice = async (req, res) => {
 
         }
 
-        await invoice.deleteOne();  // ✅ cleaner than findByIdAndDelete after already fetching
-
+        await invoice.deleteOne();
         return res.status(200).json({
 
             success: true,
@@ -473,8 +443,6 @@ export const deleteInvoice = async (req, res) => {
 
 };
 
-
-// Add this new controller at the bottom
 export const downloadInvoicePdf = async (req, res) => {
     try {
         const invoice = await Invoice.findOne({
@@ -496,7 +464,7 @@ export const downloadInvoicePdf = async (req, res) => {
         });
 
         // generateInvoicePdf(invoice, settings, res);
-        generateInvoicePdfStream(invoice, settings, res); // ✅ new
+        generateInvoicePdfStream(invoice, settings, res); 
 
 
     } catch (error) {
@@ -508,11 +476,6 @@ export const downloadInvoicePdf = async (req, res) => {
     }
 };
 
-/*
-==========================================
-Send Invoice To Client
-==========================================
-*/
 export const sendInvoiceToClient = async (req, res) => {
     try {
         const invoice = await Invoice.findOne({
@@ -544,7 +507,6 @@ export const sendInvoiceToClient = async (req, res) => {
 
         const business = settings?.business || {};
 
-        // ── Generate PDF as buffer ──────────────────────────
         // const pdfBuffer = await new Promise((resolve, reject) => {
         //     const doc = new PDFDocument({ margin: 50 });
         //     const chunks = [];
@@ -630,7 +592,6 @@ export const sendInvoiceToClient = async (req, res) => {
             </div>
         `;
 
-        // ── Send Email ──────────────────────────────────────
         await sendEmail({
             to: clientEmail,
             subject: `New Invoice ${invoice.invoiceNumber} from ${business.name || "us"}`,
