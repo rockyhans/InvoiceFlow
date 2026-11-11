@@ -1,7 +1,7 @@
 <h1 align="center">InvoiceFlow</h1>
 Implementation & Feature Documentation
 
-| **Prepared For** | Ultrakey IT Solutions Private Limited     |
+
 | ---------------- | ----------------------------------------- |
 | **Prepared By**  | Danish Rizwan                             |
 | **Role**         | Full Stack Developer (Assessment Project) |
