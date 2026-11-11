@@ -4,6 +4,7 @@ const DataTable = ({
     loading = false,
     emptyMessage = "No Data Found",
 }) => {
+    const tableData = Array.isArray(data) ? data : [];
 
     if (loading) {
         return (
@@ -11,9 +12,9 @@ const DataTable = ({
                 <table className="min-w-full">
                     <thead className="bg-gray-100">
                         <tr>
-                            {columns.map((column) => (
+                            {columns.map((column, colIdx) => (
                                 <th
-                                    key={column.accessor}
+                                    key={column.accessor || column.header || colIdx}
                                     className="px-5 py-3 text-left font-semibold text-gray-600"
                                 >
                                     {column.header}
@@ -24,8 +25,8 @@ const DataTable = ({
                     <tbody>
                         {[...Array(5)].map((_, i) => (
                             <tr key={i} className="border-t">
-                                {columns.map((column) => (
-                                    <td key={column.accessor} className="px-5 py-4">
+                                {columns.map((column, colIdx) => (
+                                    <td key={column.accessor || column.header || colIdx} className="px-5 py-4">
                                         <div className="h-4 bg-gray-200 rounded animate-pulse w-3/4" />
                                     </td>
                                 ))}
@@ -37,15 +38,15 @@ const DataTable = ({
         );
     }
 
-    if (!data.length) {
+    if (!tableData.length) {
         return (
             <div className="overflow-x-auto rounded-xl border">
                 <table className="min-w-full">
                     <thead className="bg-gray-100">
                         <tr>
-                            {columns.map((column) => (
+                            {columns.map((column, colIdx) => (
                                 <th
-                                    key={column.accessor}
+                                    key={column.accessor || column.header || colIdx}
                                     className="px-5 py-3 text-left font-semibold text-gray-600"
                                 >
                                     {column.header}
@@ -90,9 +91,9 @@ const DataTable = ({
             <table className="min-w-full">
                 <thead className="bg-gray-100">
                     <tr>
-                        {columns.map((column) => (
+                        {columns.map((column, colIdx) => (
                             <th
-                                key={column.accessor}
+                                key={column.accessor || column.header || colIdx}
                                 className="px-5 py-3 text-left font-semibold text-gray-600"
                             >
                                 {column.header}
@@ -102,14 +103,14 @@ const DataTable = ({
                 </thead>
 
                 <tbody>
-                    {data.map((row) => (
+                    {tableData.map((row, rowIdx) => (
                         <tr
-                            key={row._id}
+                            key={row._id || row.id || rowIdx}
                             className="border-t hover:bg-gray-50 transition-colors duration-150"
                         >
-                            {columns.map((column) => (
+                            {columns.map((column, colIdx) => (
                                 <td
-                                    key={column.accessor}
+                                    key={column.accessor || column.header || colIdx}
                                     className="px-5 py-4 text-sm text-gray-700"
                                 >
                                     {column.render
@@ -123,7 +124,6 @@ const DataTable = ({
             </table>
         </div>
     );
-
 };
 
 export default DataTable;

@@ -1,9 +1,10 @@
 import {
     FaChartLine,
     FaUsers,
-    FaFileLines,
     FaFileInvoice,
-    FaGear,
+    FaMoneyBillWave,
+    FaPiggyBank,
+    FaChartPie,
     FaRightFromBracket,
 } from "react-icons/fa6";
 
@@ -20,11 +21,12 @@ const Sidebar = () => {
     };
 
     const menu = [
-        { title: "Dashboard", path: "/dashboard", icon: <FaChartLine /> },
-        { title: "Clients", path: "/clients", icon: <FaUsers /> },
-        { title: "Quotes", path: "/quotes", icon: <FaFileLines /> },
-        { title: "Invoices", path: "/invoices", icon: <FaFileInvoice /> },
-        { title: "Settings", path: "/settings", icon: <FaGear /> },
+        { title: "Dashboard", path: "/dashboard" },
+        { title: "Clients", path: "/clients" },
+        { title: "Invoices", path: "/invoices" },
+        { title: "Expenses", path: "/expenses" },
+        { title: "Budgeting", path: "/budgets" },
+        { title: "Financial Reports", path: "/reports" },
     ];
 
     return (
@@ -35,7 +37,7 @@ const Sidebar = () => {
                         ₹
                     </div>
                     <div className="leading-tight text-center">
-                        <div className="text-sm font-bold tracking-wide">InvoiceFlow</div>
+                        <div className="text-sm font-bold tracking-wide">FinanceFlow</div>
                     </div>
                 </div>
             </div>
@@ -46,24 +48,24 @@ const Sidebar = () => {
                         key={item.path}
                         to={item.path}
                         className={({ isActive }) =>
-                            `flex items-center gap-3 p-3  mb-2 transition border-b ${isActive
-                                ? "bg-orange-400 text-white"
-                                : "hover:bg-gray-100"
+                            `flex items-center gap-3 p-3 mb-2 rounded-lg transition ${isActive
+                                ? "bg-orange-500 text-white shadow-sm"
+                                : "hover:bg-gray-100 text-gray-700"
                             }`
                         }
                     >
                         {item.icon}
-                        {item.title}
+                        <span className="font-medium text-sm">{item.title}</span>
                     </NavLink>
                 ))}
             </div>
 
             <button
                 onClick={handleLogout}
-                className="flex items-center gap-3 p-4 border-t hover:bg-red-100 cursor-pointer"
+                className="flex items-center gap-3 p-4 border-t hover:bg-red-50 text-gray-700 hover:text-red-600 cursor-pointer transition"
             >
                 <FaRightFromBracket />
-                Logout
+                <span className="font-medium text-sm">Logout</span>
             </button>
         </div>
     );

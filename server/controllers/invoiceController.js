@@ -2,7 +2,7 @@ import Invoice from "../models/Invoice.js";
 import Client from "../models/Client.js";
 import Quote from "../models/Quote.js";
 import generateInvoiceNumber from "../utils/generateInvoiceNumber.js";
-import Settings from "../models/Settings.js";
+// import Settings from "../models/Settings.js";
 // import generateInvoicePdf from "../utils/generateInvoicePdf.js";
 import {
     generateInvoicePdfStream,
@@ -203,7 +203,7 @@ export const getInvoiceById = async (req, res) => {
         // getInvoiceById
         const invoice = await Invoice.findOne({
             _id: req.params.id,
-            admin: req.user._id,   
+            admin: req.user._id,
         })
             .populate("client")
             .populate("quote");
@@ -255,7 +255,7 @@ export const updateInvoice = async (req, res) => {
         // updateInvoice
         const invoice = await Invoice.findOne({
             _id: req.params.id,
-            admin: req.user._id,  
+            admin: req.user._id,
         });
 
         if (!invoice) {
@@ -403,7 +403,7 @@ export const deleteInvoice = async (req, res) => {
 
         const invoice = await Invoice.findOne({
             _id: req.params.id,
-            admin: req.user._id, 
+            admin: req.user._id,
         });
 
         if (!invoice) {
@@ -464,7 +464,7 @@ export const downloadInvoicePdf = async (req, res) => {
         });
 
         // generateInvoicePdf(invoice, settings, res);
-        generateInvoicePdfStream(invoice, settings, res); 
+        generateInvoicePdfStream(invoice, settings, res);
 
 
     } catch (error) {
@@ -515,7 +515,7 @@ export const sendInvoiceToClient = async (req, res) => {
         //     doc.on("end", () => resolve(Buffer.concat(chunks)));
         //     doc.on("error", reject);
 
-            
+
 
         //     generateInvoicePdf(invoice, settings, doc);
         // });

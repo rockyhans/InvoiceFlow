@@ -241,7 +241,7 @@ const InvoiceForm = ({
                 </div>
 
                 {/* Quote Dropdown — appears after client is selected */}
-                <div>
+                {/* <div>
                     <label className="block mb-1 font-medium">
                         Quote (Optional)
                     </label>
@@ -265,7 +265,7 @@ const InvoiceForm = ({
                             </option>
                         ))}
                     </select>
-                </div>
+                </div> */}
 
             </div>
 

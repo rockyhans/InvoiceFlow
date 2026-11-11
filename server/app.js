@@ -6,7 +6,9 @@ import authRoutes from "./routes/authRoutes.js";
 import clientRoutes from "./routes/clientRoutes.js";
 import invoiceRoutes from "./routes/invoiceRoutes.js";
 import quoteRoutes from "./routes/quoteRoutes.js";
-import settingsRoutes from "./routes/settingsRoutes.js";
+import expenseRoutes from "./routes/expenseRoutes.js";
+import budgetRoutes from "./routes/budgetRoutes.js";
+import reportRoutes from "./routes/reportRoutes.js";
 
 import notFound from "./middleware/notFound.js";
 import errorHandler from "./middleware/errorMiddleware.js";
@@ -43,7 +45,11 @@ app.use("/api/invoices", invoiceRoutes);
 
 app.use("/api/quotes", quoteRoutes);
 
-app.use("/api/settings", settingsRoutes);
+app.use("/api/expenses", expenseRoutes);
+
+app.use("/api/budgets", budgetRoutes);
+
+app.use("/api/reports", reportRoutes);
 
 app.use(notFound);
 
